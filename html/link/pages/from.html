@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+
+    <form action="request.php" method="post">
+
+        <center>
+
+            <label for="name">Name</label>
+            <input type="text" name="stu_name" id="name" placeholder="Mg Mg" required>
+
+            <br><br>
+
+            <label for="mail">Email</label>
+            <input type="text" name="stu_Email" id="mail" placeholder="name@gmailcom" required>
+
+            <br><br>
+
+            <label for="password">Password</label>
+            <input type="password" name="stu_password" id="password" required>
+
+            <br><br>
+
+            <label for="Phone">Phone</label>
+            <input type="text" name="stu_phone" id="Phone" value="09">
+
+            <br><br>
+
+            <label for="passport">passport</label>
+            <input type="file" accept="image/*" name="stu_passport" id="passport"> 
+
+            <br><br>
+
+            <label for="">Gentle]</label><br>
+            <input type="radio" name="gentle" value="male" id="male"><label for="male">male</label> 
+            <input type="radio" name="gentle" value="female" id="female"><label for="female">female</label> 
+            <input type="radio" name="gentle" value="other" id="other"><label for="other">other</label> 
+
+            <br><br>
+
+            <label for="">Hobby</label><br>
+            <input type="checkbox" name="Travelling" value="Travelling" id="Travelling"><label for="Travelling">Travelling</label>
+            <input type="checkbox" name="Reading" value="Reading" id="Reading"><label for="Reading">Reading</label>
+            <input type="checkbox" name="Gaming" value="Gaming" id="Gaming"><label for="Gaming">Gaming</label>
+
+
+            <br><br>
+
+
+            <button type="submit">Submit</button>
+
+                 
+        </center>
+
+    </form>
+    
+</body>
+</html>
