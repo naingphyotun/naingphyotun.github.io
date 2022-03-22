@@ -1,0 +1,49 @@
+ASSIGNMENT 2
+
+REATE TABLE salespeople
+(
+    Nrc_no VARCHAR(20) NOT NULL PRIMARY KEY,
+    Seller_no INT(10) NOT NULL UNIQUE,
+    Seller_name VARCHAR(15) NOT NULL,
+    Date_of_birth DATE NOT NULL,
+    Age INT(2) NOT NULL,
+    Salary DECIMAL(10,2) NOT NULL,
+    Work_hour VARCHAR(20) NOT NULL,
+    City VARCHAR(20) NOT NULL,
+    Email VARCHAR(30) NOT NULL UNIQUE
+);
+
+DESC salespeople;
+
+
+
+
+CREATE TABLE customers
+(
+    Cust_Nrc VARCHAR(20) NOT NULL PRIMARY KEY,
+    Cust_No INT(10) NOT NULL UNIQUE,
+    Cust_Name VARCHAR(20) NOT NULL,
+    Cust_Age INT(2) NOT NULL,
+    Cust_Ratinng DECIMAL(10,2) NOT NULL,
+    Times_Visited INT(3) NOT NULL
+);
+
+DESC customers;
+
+
+
+
+CREATE TABLE orders
+(
+    Order_No INT(10) NOT NULL PRIMARY KEY,
+    Type_of_order VARCHAR(20) NOT NULL,
+    Order_Name VARCHAR(20) NOT NULL,
+    Amount DECIMAL(7,2) NOT NULL,
+    Order_Date DATE NOT NULL,
+    Customer_No INT(10) NOT NULL UNIQUE,
+    Customer_Name VARCHAR(10) NOT NULL,
+    Seller_No INT(10) NOT NULL UNIQUE,
+    Seller_Name VARCHAR(20) NOT NULL
+);
+
+DESC orders;
