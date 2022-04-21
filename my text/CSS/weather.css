@@ -1,0 +1,110 @@
+.logo{
+    width: 70px;
+    height: 70px;
+    margin-top: 40px;
+    margin-left: 500px;
+}
+
+.title{
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: -60px;
+    margin-left: 575px;
+}
+
+.body_img{
+    width: 1000px;
+    height: 1000px;
+    margin-left: 200px;
+}
+
+div div a{
+    text-decoration: none;
+    color: black;
+}
+
+.na_name1{
+    position: absolute;
+    top: 570px;
+    left: 630px;
+}
+
+.na_name2{
+    position: absolute;
+    top: 780px;
+    left: 800px;
+}
+
+.na_name3{
+    position: absolute;
+    top: 640px;
+    left: 880px;
+}
+
+.na_name4{
+    position: absolute;
+    top: 890px;
+    left: 920px;
+}
+.na_name8{
+    position: absolute;
+    top: 560px;
+    left: 930px;
+}
+.na_name5{
+    position: absolute;
+    top: 420px;
+    left: 820px;
+}
+
+.na_name6{
+    position: absolute;
+    top: 450px;
+    left: 420px;
+}
+.na_name7{
+    position: absolute;
+    top: 350px;
+    left: 450px;
+}
+.na_name9{
+    position: absolute;
+    top: 380px;
+    left: 550px;
+}
+
+.body_image2{
+    width: 400px;
+    height: 750px;
+    margin-top: 40px;
+    margin-left: 500px;
+}
+
+.cname1{
+    position: absolute;
+    top: 640px;
+    left: 685px;
+    color: red;
+}
+
+.cname2{
+    position: absolute;
+    top: 450px;
+    left: 685px;
+    color: red;
+}
+
+.cname3{
+    position: absolute;
+    top: 480px;
+    left: 705px;
+    color: red;
+}
+
+.cname4{
+    position: absolute;
+    top: 400px;
+    left: 770px;
+    color: red;
+}
