@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function(){
+            var students = [
+                {name:"Mg Mg", age: 22, gender: "male"},
+                {name:"Aung Aung", age: 25, gender: "male"},
+                {name:"Su Su", age: 20, gender: "female"},
+                {name:"Mya Mya", age: 32, gender: "female"},
+            ]
+        
+            //var femalestudents = students.filter(row => row.gender=="female")
+
+            console.log(students);
+            var data=""
+            $.each(students,function(i,v){
+                data += `<tr>
+                            <td>${i+1}</td>
+                            <td>${v.name}</td>
+                            <td>${v.age}</td>
+                            <td>${v.gender}</td>
+                            <td>
+                                <button class="detailbtn" data-id=${i}>detail</button>    
+                            </td>
+                        </tr>`
+            })
+
+            $("#mytbody1").html(data)
+
+
+            // Detail btn click event
+            $(".detailbtn").on("click",function(){
+                var id = $(this).data("id"); // main point
+                var name = students[id].name
+                var age = students[id].age
+                var gender = students[id].gender
+                alert(`${name} is ${age} years old, ${gender}`)
+            })
+        })
+    </script>
+</head>
+<body>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="mytbody1">
+            
+        </tbody>
+    </table>
+
+</body>
+</html>
