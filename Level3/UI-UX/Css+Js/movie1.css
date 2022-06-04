@@ -1,0 +1,65 @@
+.maincolor{
+    color: white;
+}
+
+.custom_bgcolor{
+    background-color: #dc3545;
+}
+.my{
+    font-size: 12px;
+}
+.carousel-inner .carousel-item img{
+    height: 90vh;
+    object-fit: cover;
+}
+
+.nav-pills .nav-link{
+    color: #dc3545;
+    font-weight: bold;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    color: white;
+    background-color: #dc3545;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Dancing Script', cursive;
+}
+.card{
+    border: none;
+}
+.card-img, .card-img-top, .card-img-bottom{
+    border-radius: 10px;
+}
+.bg-image{
+    background-image: url(../img/coverphoto1.jpg);
+}
+.border{
+    border: 2px solid #dc3545;
+    border-radius: 35px;
+}
+.bg-color{
+    background-color: #dc3545;
+    border-radius: 10px;
+}
+.border2{
+    color: black;
+    border: 2px solid white;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-decoration: none;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    
+}
+.border2:hover{
+    color: #dc3545;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
