@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="../JS/main.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{name}} - {{age}} - {{profile}}
+
+        <button v-on:click="age++">Increase</button>
+
+        <button v-on:click="reverse">reverse name</button>
+
+        <img v-bind:src="profile" alt="">
+
+        <p><span v-html="para"></span></p>
+
+        <button :id="`no-${id}`">Detail</button>
+
+        <p v-if="seen">Now you can see me</p>
+
+        <p v-if="mark>40 && mark<80">pass</p>
+
+        <p v-else-if="mark>80">D</p>
+
+        <p v-else="mark<40">fail</p>
+
+        <ul>
+            <li v-for="(row,index) in boys">{{index}} - {{row.name}}</li>
+        </ul>
+
+        {{boys.length}}
+
+        <input type="text" placeholder="Input your name here" v-model="username">
+        {{username}}
+          
+    </div>
+
+
+    <!-- This Is Not Mounted Area -->
+
+    <h3>Hello Vue{{name}}</h3>
+
+
+    <script>
+        const mountedApp = app.mount("#app");
+    </script>
+    
+</body>
+</html>

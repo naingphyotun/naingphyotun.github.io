@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+    <link rel="icon" href="../images/logo4.png">
+    <link rel="stylesheet" href="../Asserts/css/bootstrap.min.css">
+
+    <style>
+        .border{
+            border: 2px solid aquamarine;
+            border-radius: 20px;
+        }
+        #bg{
+            background-color: aquamarine;
+        }
+    </style>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    feet: "",
+                    inches: "",
+                    pounds: "",
+                    result: 0,
+
+                    under: '<span style="color: blue;">You are Underweight.</span>',
+                    normal: '<span style="color: green;">You have Normal weight.</span>',
+                    over: '<span style="color: orange;">You are Overweight.</span>',
+                    obese: '<span style="color: red;">You are Obese!</span>',
+                }
+            },
+            methods: {
+                Calculator(event){
+                    var weight = Number(this.pounds*703);
+                    var height = Number(this.feet*12 + this.inches);
+                    var calculate = Number(weight / (height*height));
+
+                    this.result = calculate
+                } 
+            }
+        })
+    </script>
+</head>
+<body>
+    <div class="container border mt-5" id="bg">
+        <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-0 col-12">
+                <img src="../images/img1.jpg" alt="" class="mt-3">
+            </div>
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                <h1>Caculate your weight</h1>
+        
+                <div id="app">
+                    <h3 >Your Height???</h3><br>
+                    <input type="number" placeholder="feet" v-model="feet" class="border ps-2"><p class="ps-2">{{feet}} feet</p><br>
+                    <input type="number" placeholder="inches" v-model="inches" class="border ps-2"><p class="ps-2">{{inches}} inches</p>
+                    <h3>Your Weight???</h3>
+                    <input type="number" placeholder="pounds" v-model="pounds" class="border ps-2">
+                    <p class="ps-2">Weight - {{pounds}} pounds</p>
+            
+                    <br>
+                    <button v-on:click="Calculator()" class="border">Calculate</button><br>
+                    <br>
+            
+                    <h2>Your BMI is result is...</h2>
+                    <h3>{{result}}</h3>
+            
+                    <div>
+                        <p v-if="result != 0 && result < 18.5"><strong v-html="under"></strong></p>
+                        <p v-if="result >= 18.5 && result <= 24.9"><strong v-html="normal"></strong></p>
+                        <p v-if="result > 24.9 && result <= 29.9"><strong v-html="over"></strong></p>
+                        <p v-if="result >= 30"><strong v-html="obese"></strong></p>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+    <script src="../Asserts/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
