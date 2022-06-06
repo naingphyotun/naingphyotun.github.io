@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tab</title>
+        <style>
+          ul.link-wapper{
+            list-style: none;
+            text-align: center;
+          }
+      
+          ul.link-wapper li{
+            display: inline-block;
+            padding: 10px;
+          }
+      
+          ul.link-wapper li a{
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+          }
+      
+          ul.link-wapper li a.active{
+              color: aqua;
+              border-bottom: 1px solid skyblue;
+          }
+      
+          .content{
+            max-width: 800px;
+            background-color: aqua;
+            padding: 20px;
+            margin: 0 auto;
+            display: none;
+          }
+
+          /* For my shop */
+          .myshop{
+            display: flex;
+            justify-content: space-around;
+          }
+        </style>
+      
+        <script src="jquery.min.js"></script>
+        <script>
+          $(function (param) { 
+            $('.content').first().slideDown();
+      
+            $('ul.link-wapper li a').on("click",function (event) { 
+                var current_tab = $(this);
+                $('ul.link-wapper li a').removeClass('active');
+                current_tab.addClass('active');
+      
+                $('.content').slideUp();
+                current_tab_href = current_tab.attr('href'); // #home
+                $(current_tab_href).slideDown(); // $('#home')
+      
+                event.preventDefault();
+            })
+
+            $(".addtocard").on("click", function(){
+              //alert('ok')
+              var id = $(this).data("id");
+              var name = $(this).data("name");
+              var price = $(this).data("price");
+
+              var item ={
+                id:id,
+                name:name,
+                price:price
+              }
+             // console.log(item);
+             var ls = localStorage.getItem("cart")
+             if(!ls){
+               var itemArry = new Array;
+             }else{
+               var itemArry = JSON.parse(ls)
+             }
+            
+             itemArry.push(item)
+             //console.log(itemArry);
+             var itemArryJson = JSON.stringify(itemArry)
+             //console.log(itemArryJson)
+             localStorage.setItem("cart",itemArryJson)
+            })
+          })
+        </script>
+      </head>
+      <body>
+        <div class="tab">
+          <!-- Nav -->
+          <ul class="link-wapper">
+            <li>
+              <a href="#home" class="active">Home</a>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#contact">Contact</a>
+            </li>
+            <li>
+              <a href="#shop">Shop</a>
+            </li>
+          </ul>
+      
+          <!-- Content -->
+          <div class="content" id="home">
+            <h2>Home Tab</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, fuga neque autem est fugit placeat mollitia sit ducimus. Quidem voluptatum blanditiis porro excepturi eaque atque ad at officia illo eligendi!</p>
+          </div>
+      
+          <div class="content" id="about">
+            <h2>About Tab</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, fuga neque autem est fugit placeat mollitia sit ducimus. Quidem voluptatum blanditiis porro excepturi eaque atque ad at officia illo eligendi!</p>
+          </div>
+
+          <div class="content" id="shop">
+            <h2>Shop Tab</h2>
+
+            <div class="myshop">
+              <div class="item">
+                <img src="../unnamed.jpg" alt="" width="200px" height="200px">
+                <p>Item One - <strong>500</strong></p>
+                <button class="addtocard" data-id="1" data-name="Item One" data-price="500">Add to card</button>
+              </div>
+              <div class="item">
+                <img src="../unnamed.jpg" alt="" width="200px" height="200px">
+                <p>Item Two - <strong>1500</strong></p>
+                <button class="addtocard" data-id="2" data-name="Item Two" data-price="1500">Add to card</button>
+              </div>
+              <div class="item">
+                <img src="../unnamed.jpg" alt="" width="200px" height="200px">
+                <p>Item Three - <strong>2500</strong></p>
+                <button class="addtocard" data-id="3" data-name="Item Three" data-price="2500">Add to card</button>
+              </div>
+            </div>
+          </div>
+      
+          <div class="content" id="contact">
+            <h2>Contact Tab</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, fuga neque autem est fugit placeat mollitia sit ducimus. Quidem voluptatum blanditiis porro excepturi eaque atque ad at officia illo eligendi!</p>
+          </div>
+        </div>
+      
+      </body>
+</html>

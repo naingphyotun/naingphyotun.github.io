@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQ Introduction</title>
+    <!-- JQuery -->
+    <script src="jquery.min.js"></script>
+
+    <!-- Custom -->
+    <script src="custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                alert('ok')
+            })
+        })
+
+        var h2 = $("h2"); //element
+        console.log(h2)
+
+        var myp = $("#detail"); //ID
+        console.log(myp)
+
+        var arthicel= $(".class"); //class
+        console.log(arthicel)
+    </script>
+</head>
+<body>
+    <p>HELLO WORLD!!</p>
+    <h2>Hello JQ</h2>
+
+    <p id="myp">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam suscipit dolores veniam voluptatem labore totam repellat, voluptates cupiditate magni assumenda.</p>
+    
+    <p class="arthicel">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, odit vitae voluptates consectetur ex animi odio hic quaerat sunt sit!</p>
+   
+    <button>click</button>
+</body>
+</html>

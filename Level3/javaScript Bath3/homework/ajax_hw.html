@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memes Generators!</title>
+
+    <script src="../jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        $(function(){
+            //get memes
+            $.get("https://api.imgflip.com/get_memes",function(resp){
+                // console.log(resp)
+                var imgArr = resp.data.memes;
+                var imgArrJson = JSON.stringify(imgArr);
+                localStorage.setItem("memes_img",imgArrJson)  
+            })
+
+            getData();
+            function getData(){
+                var ls = localStorage.getItem("memes_img")
+                if(ls){
+                    var imgArr = JSON.parse(ls)
+                    var data = ""
+
+                    $.each(imgArr,function(i,v){
+                        data+=`<img src="${v.url}" data-id="${i}" class="img_memes"></img>`
+                    })
+                    $("#select").html(data)
+                }
+            }
+
+            $("#select").on("click","img",function(){
+                $("#def_img").hide();
+                $("#def_TT").hide();
+                var index = $(this).data("id")
+                var ls = localStorage.getItem("memes_img")
+                if(ls){
+                    var imgArr = JSON.parse(ls)
+                    var img_url = imgArr[index].url;
+                    var img_TT = imgArr[index].name;
+                    var img = `<img src="${img_url}" data-id="${index}" class="selected" width="450px" height="450px"></img>`;
+                    var title = `<h4>${img_TT}</h4>`
+                    $("#img_preview").html(img);
+                    $("#new_TT").html(title);
+
+                    var img_bc = imgArr[index].box_count
+                    if(img_bc == 2){
+                        $("#text-2").hide();
+                        $("#text-3").hide();
+                        $("#text-4").hide();
+                        $("#text-5").hide();  
+                    }if(img_bc == 3){
+                        $("#text-2").show();
+                        $("#text-3").hide();
+                        $("#text-4").hide();
+                        $("#text-5").hide();  
+                    }if(img_bc == 4){
+                        $("#text-2").show();
+                        $("#text-3").show();
+                        $("#text-4").hide();
+                        $("#text-5").hide();
+                    }if(img_bc == 5){
+                        $("#text-2").show();
+                        $("#text-3").show();
+                        $("#text-4").show();
+                        $("#text-5").hide();
+                    }if(img_bc == 6){
+                        $("#text-2").show();
+                        $("#text-3").show();
+                        $("#text-4").show();
+                        $("#text-5").show();
+                    }
+                }
+            })
+
+            $("#mytb").on("click","#GMbtn",function(){
+               // $("#def_img").hide();
+                var index = $("#img_preview img.selected").data("id");
+                var ls = localStorage.getItem("memes_img")
+                if(ls){
+                    var imgArr = JSON.parse(ls)
+
+                    $.post("https://api.imgflip.com/caption_image",{
+                        template_id:imgArr[index].id,
+                        username:"thetpainghtutfly",
+                        password:"thetpainghtutfly",
+                        text0:$("#text-0").val(),
+                        text1:$("#text-1").val(),
+                        text2:$("#text-2").val(),
+                        text3:$("#text-3").val(),
+                        text4:$("#text-4").val(),
+                        text5:$("#text-5").val(),
+                    },function(resp){
+                        if(resp.success == true){
+                            var img =`<img src="${resp.data.url}" width="450px" height="450px">`
+                            $("#img_preview").html(img)
+                        }
+                    });
+                    getData();
+                }
+            })
+
+        })
+    </script>
+</head>
+
+<body>
+    <div class="main_page">
+        <h1>Memes Generate</h1>
+        <table class="mytable" border="0" cellpadding="0" cellspacing="10" >
+            <tbody id="mytb">
+                <tr>
+                    <td rowspan="3">
+                        <div id="img_preview" style="border: 1px solid; display: inline-block; margin-right: 50px;" >
+                            <img src="https://i.imgflip.com/30b1gx.jpg" id="def_img" width="450px" height="450px" alt="">
+                        </div>
+                    </td>
+                    <td colspan="6" id="mm_select">
+                        <div id="def_TT"><h4 style="text-align:center;">Drake Hotline Bling</h4></div>
+                        <div id="new_TT"></div>
+                        <div id="select"></div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="mytext_box" style="text-align:top;">
+                        <div style="display: inline-block;" width="300px" class="text-box">
+                            <input type="text" placeholder="Text#0" class="mytext" id="text-0" value="">
+                            <br>
+                            <input type="text" placeholder="Text#1" class="mytext" id="text-1" value="">
+                            <br>
+                            <input type="text" placeholder="Text#2" class="mytext" id="text-2" value="" style="display:none;">
+                            <br>
+                            <input type="text" placeholder="Text#3" class="mytext" id="text-3" value="" style="display:none;">
+                            <br>
+                            <input type="text" placeholder="Text#4" class="mytext" id="text-4" value="" style="display:none;">
+                            <br>
+                            <input type="text" placeholder="Text#5" class="mytext" id="text-5" value="" style="display:none;">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <button id="GMbtn">Generate</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

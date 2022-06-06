@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function (){
+            $("#marritab").on("click",function(){
+                $("#spousetab").slideDown();
+            })
+            $("#singletab").on("click",function(){
+                $("#spousetab").slideUp();
+            })
+            $("#save").on("click",function(){
+                var name = $("#name").val();
+                var age = $("#age").val();
+                var single = $("#Single").val();
+                var marri = $("#marri").val();
+                var spouse =$("#spouse").val();
+                if(status == 1){
+                    alert('His name is '+name+ ' and he is '+age+' years old and he is single')
+                }else{
+                    alert('His name is '+name+ ' and he is '+age+' years old and he is marriaged his wife is ' +spouse)
+                }
+            })
+        })
+    </script>
+</head>
+<body style="text-align: center;">
+    <form action="">
+        <div id="nametab">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name">
+        </div><br>
+        <div id="agetab">
+            <label for="age">Age</label>
+            <input type="number" name="age" id="age">
+        </div><br>
+        <div id="singletab" style="display: inline;">
+            <label for="Single">Single</label>
+            <input type="radio" name="gentle" id="Single" value="1">
+        </div><br>
+        <div id="marritab" style="display: inline;">
+            <label for="marri">Marriaged</label>
+            <input type="radio" name="gentle" id="marri" value="2">
+        </div><br>
+        <div id="spousetab" style="display: none;">
+            <label for="spouse">Spouse</label>
+            <input type="text" name="spouse" id="spouse">
+        </div><br><br>
+
+        <button id="save">Save</button>
+    </form>
+    
+</body>
+</html>
